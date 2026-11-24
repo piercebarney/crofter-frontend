@@ -1,0 +1,47 @@
+@use 'sass:string';
+@use 'sass:color';
+
+// Override the display-rgb function from Pico CSS to use string.unquote instead of global unquote
+@function display-rgb($color) {
+	@return string.unquote('rgb(' + 
+	color.channel($color, 'red', $space: rgb) + ', ' + 
+		color.channel($color, 'green', $space: rgb) + ', ' + 
+		color.channel($color, 'blue', $space: rgb) + ')');
+}
+
+// Override the mix function to use color.mix instead of global mix
+@function mix($color1, $color2, $weight: 50%) {
+	@return color.mix($color1, $color2, $weight);
+}
+
+// Override the rgba function to use color module instead of global rgba
+@function rgba($color, $alpha) {
+	@return color.change($color, $alpha: $alpha);
+}
+
+// Shadow function for consistent box shadows
+@function shadow($color, $depth: 'medium') {
+	$alpha: 0.2;
+	$offset-y: 1px;
+	$blur: 3px;
+	$spread: 0;
+	
+	@if $depth == 'small' {
+		$offset-y: 1px;
+		$blur: 2px;
+		$alpha: 0.15;
+	} @else if $depth == 'medium' {
+		$offset-y: 2px;
+		$blur: 4px;
+		$alpha: 0.2;
+	} @else if $depth == 'large' {
+		$offset-y: 4px;
+		$blur: 8px;
+		$alpha: 0.25;
+	}
+
+	
+	$shadow-color: color.change($color, $alpha: $alpha);
+
+	@return 0 $offset-y $blur $spread $shadow-color;
+}

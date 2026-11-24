@@ -1,0 +1,74 @@
+/* Capacitor-specific styles to fix scrolling issues */
+
+/* Apply when in Capacitor native app environment */
+html.capacitor,
+html.capacitor body {
+	/* Prevent overscrolling */
+	overscroll-behavior: none;
+	
+	/* Disable elastic scrolling */
+	-webkit-overflow-scrolling: auto;
+	
+	/* Ensure the content takes up the full height */
+	height: 100%;
+	
+	/* Remove any default margins */
+	margin: 0;
+	padding: 0;
+	
+	/* Prevent bounce effect */
+	position: fixed;
+	overflow: hidden;
+	width: 100%;
+}
+
+/* Fix for input fields in Capacitor */
+html.capacitor input,
+html.capacitor textarea,
+html.capacitor select {
+	font-size: 1rem; /* Prevent zoom on focus */
+}
+
+/* Main content container in Capacitor environment */
+html.capacitor .app-container {
+	/* Enable scrolling for the main content */
+	overflow: auto;
+	overflow-x: hidden;
+	
+	/* Take up full height */
+	height: 100vh;
+	
+	/* Smooth scrolling */
+	scroll-behavior: smooth;
+	
+	/* Better touch scrolling */
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Android-specific styles */
+html.capacitor.android {
+	/* Use viewport height variable for more accurate height on Android */
+	height: var(--viewport-height, 100%);
+	
+	/* Prevent content shift when soft keyboard appears */
+	&.keyboard-open {
+		height: 100%;
+		overflow: hidden;
+	}
+}
+
+html.capacitor.android body {
+	/* Apply status bar padding to body */
+	padding-top: 1rem !important;
+
+	.main-header {
+		padding-top: 1rem !important;
+	}
+}
+
+/* iOS-specific styles */
+html.capacitor.ios .app-container {
+	/* Add safe area insets for iOS notches and home indicator */
+	padding-top: env(safe-area-inset-top, 0);
+	padding-bottom: env(safe-area-inset-bottom, 0);
+}

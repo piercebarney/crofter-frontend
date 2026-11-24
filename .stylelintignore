@@ -1,0 +1,5 @@
+# Ignore Tailwind CSS file
+src/app.css
+
+# Ignore TinyMCE
+static/css/tinymce/**/*

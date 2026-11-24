@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use '@picocss/pico/scss/settings' as *;
+
+#{$semantic-root-element} {
+	@if map.get($modules, 'layout/section') {
+		/**
+   * Section
+   */
+
+		#{$parent-selector} section {
+			margin-bottom: var(#{$css-var-prefix}block-spacing-vertical);
+		}
+	}
+}

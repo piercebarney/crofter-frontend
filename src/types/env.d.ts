@@ -1,0 +1,1 @@
+export type Env = 'local' | 'dev' | 'staging' | 'prod' | 'all'

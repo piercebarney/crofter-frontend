@@ -1,0 +1,151 @@
+@use '@picocss/pico/scss/settings' as *;
+
+#{$semantic-root-element} {
+	// Add the correct font weight in Chrome, Edge, and Safari
+	b,
+	strong {
+		font-weight: bolder;
+	}
+
+	// Prevent `sub` and `sup` elements from affecting the line height in all browsers
+	sub,
+	sup {
+		position: relative;
+		font-size: 0.75em;
+		line-height: 0;
+		vertical-align: baseline;
+	}
+
+	sub {
+		bottom: -0.25em;
+	}
+
+	sup {
+		top: -0.5em;
+	}
+
+	// Pico
+	// ––––––––––––––––––––
+
+	address,
+	blockquote,
+	dl,
+	ol,
+	p,
+	pre,
+	table,
+	ul {
+		margin: 0;
+		font-style: normal;
+		font-weight: var(--pico-font-weight);
+	}
+
+	// Headings
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0;
+		font-weight: var(--pico-font-weight);
+		font-size: var(--pico-font-size);
+		line-height: var(--pico-line-height);
+		font-family: var(--pico-font-family);
+	}
+
+	// Margin-top for headings after a block
+	:where(article, address, blockquote, dl, figure, form, ol, p, pre, table, ul) {
+		~ :is(h1, h2, h3, h4, h5, h6) {
+			margin-top: var(--pico-typography-spacing-top);
+		}
+	}
+
+	// Paragraphs
+	p {
+		line-height: 1.5;
+	}
+
+	// Heading group
+	hgroup {
+		margin-bottom: var(--pico-typography-spacing-vertical);
+
+		> * {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		> *:not(:first-child):last-child {
+			--pico-color: var(--pico-muted-color);
+			--pico-font-weight: unset;
+
+			font-size: 1rem;
+		}
+	}
+
+	// Lists
+	:where(ol, ul) {
+		li {
+			margin-bottom: calc(var(--pico-typography-spacing-vertical) * 0.25);
+		}
+	}
+
+	// Margin-top for nested lists
+	// 1. Remove the margin on nested lists in Chrome, Edge, IE, and Safari
+	:where(dl, ol, ul) :where(dl, ol, ul) {
+		margin: 0; // 1
+		margin-top: calc(var(--pico-typography-spacing-vertical) * 0.25);
+	}
+
+	ul li {
+		list-style: none;
+	}
+
+	// // Highlighted text
+	// mark {
+	// 	padding: 0.125rem 0.25rem;
+	// 	background-color: var(--pico-mark-background-color);
+	// 	color: var(--pico-mark-color);
+	// 	vertical-align: baseline;
+	// }
+
+	// // Blockquote
+	// blockquote {
+	// 	display: block;
+	// 	margin: var(--pico-typography-spacing-vertical) 0;
+	// 	padding: var(--pico-spacing);
+	// 	border-right: none;
+	// 	border-left: 0.25rem solid var(--pico-blockquote-border-color);
+	// 	border-inline-start: 0.25rem solid var(--pico-blockquote-border-color);
+	// 	border-inline-end: none;
+
+	// 	footer {
+	// 		margin-top: calc(var(--pico-typography-spacing-vertical) * 0.5);
+	// 		color: var(--pico-blockquote-footer-color);
+	// 	}
+	// }
+
+	// // Abbreviations
+	// // 1. Remove underline decoration in Chrome, Edge, IE, Opera, and Safari
+	// abbr[title] {
+	// 	border-bottom: 1px dotted;
+	// 	text-decoration: none; // 1
+	// 	cursor: help;
+	// }
+
+	// // Ins
+	// ins {
+	// 	color: var(--pico-ins-color);
+	// 	text-decoration: none;
+	// }
+
+	// // del
+	// del {
+	// 	color: var(--pico-del-color);
+	// }
+
+	// // selection
+	// ::selection {
+	// 	background-color: var(--pico-text-selection-color);
+	// }
+}

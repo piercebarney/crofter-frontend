@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="description" content="A marketplace for locally produced foods" />
+		<meta name="theme-color" content="#333333" />
+
+		<!-- DNS prefetch and preconnect for Klaviyo -->
+		<link rel="dns-prefetch" href="https://static.klaviyo.com" />
+		<link rel="preconnect" href="https://static.klaviyo.com" crossorigin />
+		<link rel="dns-prefetch" href="https://a.klaviyo.com" />
+		<link rel="preconnect" href="https://a.klaviyo.com" crossorigin />
+		
+		<!-- Icons -->
+		<link rel="icon" href="%sveltekit.assets%/pwa/icons/icon-192.png" />
+		<link rel="manifest" href="%sveltekit.assets%/pwa/manifest.webmanifest" crossorigin="use-credentials" />
+		
+		<!-- iOS meta tags -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-title" content="Crofter Market" />
+		<link rel="apple-touch-icon" href="%sveltekit.assets%/pwa/icons/icon-192.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/pwa/icons/icon-180.png" />
+		<link rel="apple-touch-icon" sizes="167x167" href="%sveltekit.assets%/pwa/icons/icon-167.png" />
+		<link rel="apple-touch-icon" sizes="152x152" href="%sveltekit.assets%/pwa/icons/icon-152.png" />
+
+		<!-- iOS Splash Screens -->
+		<link rel="apple-touch-startup-image" href="%sveltekit.assets%/pwa/icons/splash/iphone-6.1.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
+		<link rel="apple-touch-startup-image" href="%sveltekit.assets%/pwa/icons/splash/iphone-6.7.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3)" />
+		<link rel="apple-touch-startup-image" href="%sveltekit.assets%/pwa/icons/splash/ipad-12.9.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" />
+		
+		<!-- Android meta tags -->
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="application-name" content="Crofter Market" />
+		<meta name="theme-color" content="#333333" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#333333" media="(prefers-color-scheme: dark)" />
+		
+		%sveltekit.head%
+		
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div id="root" style="position: relative; height: 100vh; height: 100svh; width: 100%">%sveltekit.body%</div>
+		<script>
+
+			// Check if the app is already installed
+			if ('getInstalledRelatedApps' in navigator) {
+				
+				navigator.getInstalledRelatedApps().then((apps) => {
+
+					if (apps.length > 0) window.isAppInstalled = true
+				})
+			}
+
+		</script>
+	</body>
+</html>

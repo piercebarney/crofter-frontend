@@ -1,0 +1,313 @@
+@use 'sass:map';
+@use '@picocss/pico/scss/colors' as *;
+@use '@picocss/pico/scss/settings' as *;
+
+// Use our custom functions and theme-colors instead of Pico's
+@use './functions' as functions;
+@use './theme-colors';
+
+// Default: Light theme
+@mixin theme {
+	// CUSTOM
+
+	// General colors
+	--cm-background: #{theme-colors.get('app-background-primary', 'light')};
+	--cm-background-inverse: #{theme-colors.get('app-background-inverse', 'light')};
+	--cm-background-secondary: #{theme-colors.get('app-background-secondary', 'light')};
+	--cm-background-money: #{theme-colors.get('money-light', 'light')};
+	--cm-background-base: #{theme-colors.get('primary-hover', 'light')};
+	--cm-primary: #{theme-colors.get('primary', 'light')};
+	--cm-primary-hover: #{theme-colors.get('primary-hover', 'light')};
+	--cm-primary-active: #{theme-colors.get('primary-active', 'light')};
+	--cm-primary-inverse: #{$white};
+	--cm-primary-light: #{theme-colors.get('primary-light', 'light')};
+	--cm-primary-light-hover: #{theme-colors.get('primary-light-hover', 'light')};
+	--cm-secondary: #{theme-colors.get('secondary', 'light')};
+	--cm-secondary-hover: #{theme-colors.get('secondary-hover', 'light')};
+	--cm-secondary-inverse: #{$black};
+	--cm-text: #{theme-colors.get('text-primary', 'light')};
+	--cm-text-light: #{theme-colors.get('text-primary-light', 'light')};
+	--cm-text-secondary: #{theme-colors.get('text-secondary', 'light')};
+	--cm-text-inverse: var(--cm-primary-inverse);
+	--cm-text-secondary-inverse: var(--cm-secondary-inverse);
+	--cm-text-secondary-dark: #{theme-colors.get('text-secondary-dark', 'light')};
+	--cm-text-money: #{theme-colors.get('money', 'light')};
+	--cm-border: #{theme-colors.get('border', 'light')};
+	--cm-form-border: #{theme-colors.get('form-border', 'light')};
+	--cm-highlight: #{theme-colors.get('utility-highlight', 'light')};
+	
+	// Alert colors
+	--cm-danger: #{theme-colors.get('danger', 'light')};
+	--cm-danger-hover: #{theme-colors.get('danger', 'light')}A5;
+	--cm-warning: #{theme-colors.get('warning', 'light')};
+	--cm-warning-hover: #{theme-colors.get('warning', 'light')}A5;
+	--cm-success: #{theme-colors.get('success', 'light')};
+	--cm-success-hover: #{theme-colors.get('success', 'light')}A5;
+	--cm-info:	#{theme-colors.get('primary', 'light')};
+	--cm-info-hover: #{theme-colors.get('primary', 'light')}A5;
+
+	// Auth
+	--cm-auth-background: var(--cm-primary);
+	--cm-auth-text: #{$white};
+	--cm-auth-background-gradiant: var(--cm-primary); // linear-gradient(to bottom, var(--cm-auth-background) 50%, #{$black} 125%);
+
+	// Nav colors
+	--cm-nav-background: var(--cm-primary);
+	--cm-nav-background-inverse: #{$white};
+	--cm-nav-text: #{$white};
+	--cm-nav-text-inverse: #{$black};
+	--cm-nav-button-background: transparent;
+	--cm-nav-button-hover: var(--cm-primary-hover);
+	--cm-nav-button-active: #{$white};
+	--cm-nav-button-text: #{$white};
+	--cm-nav-input-text: var(--cm-text);
+
+	// Utilites colors
+	--cm-utility-background: #{$white};
+	--cm-utility-background-secondary: #{theme-colors.get('utility-background-secondary', 'light')};
+	--cm-utility-highlight: var(--cm-highlight);
+
+	// Button colors
+	--cm-button-background: var(--cm-primary);
+	--cm-button-background-inverse: var(--cm-primary-inverse);
+	--cm-button-hover: var(--cm-primary-hover);
+	--cm-button-active: var(--cm-primary-active);
+	--cm-button-text: #{$white};
+	--cm-button-text-inverse: #{$black};
+	--cm-button-text-outline: -.5px .5px #{$black}, .5px .5px #{$black}, .5px -.5px 0 #{$black}, -.5px -.5px 0 #{$black};
+
+	// Input
+	--cm-input-border: var(--cm-border);
+
+	// Forms
+	--cm-form-background: #{theme-colors.get('form-background', 'light')};
+	--cm-form-background-color: #{$white};
+	--cm-form-selected-background-color: #{$white};
+	--cm-form-border-color: var(--cm-form-border);
+	--cm-form-color: var(--cm-text);
+	--cm-form-placeholder-color: var(--cm-text-secondary);
+	--cm-form-active-background-color: #{$white};
+	--cm-form-active-border-color: var(--cm-primary);
+	--cm-form-focus-color: var(--cm-primary);
+	--cm-form-disabled-opacity: 0.5;
+	--cm-form-invalid-border-color: #{functions.mix($red-500, $zinc-350)};
+	--cm-form-invalid-active-border-color: #{functions.mix($red-500, $zinc-350, 75%)};
+	--cm-form-invalid-focus-color: var(--cm-form-invalid-active-border-color);
+	--cm-form-valid-border-color: #{functions.mix($jade-450, $zinc-350)};
+	--cm-form-valid-active-border-color: #{functions.mix($jade-450, $zinc-350, 75%)};
+	--cm-form-valid-focus-color: var(--cm-form-valid-active-border-color);
+	--cm-form-auth-background-color: #{functions.rgba($white, 0.15)};
+	--cm-form-auth-selected-background-color: #{$white};
+	--cm-form-auth-border-color: transparent;
+	--cm-form-auth-color: #{$white};
+	--cm-form-auth-placeholder-color: #{functions.rgba($white, 0.5)};
+	--cm-form-auth-active-background-color: #{functions.rgba($white, 0.15)};
+	--cm-form-auth-active-border-color: transparent;
+	--cm-form-auth-focus-color: var(--cm-primary);
+	--cm-form-auth-disabled-opacity: 0.5;
+	--cm-form-auth-invalid-border-color: #0f0;
+	--cm-form-auth-invalid-active-border-color: #0f0;
+	--cm-form-auth-invalid-focus-color: var(--cm-form-auth-invalid-active-border-color);
+	--cm-form-auth-valid-border-color: #0f0;
+	--cm-form-auth-valid-active-border-color: #0f0;
+	--cm-form-auth-valid-focus-color: var(--pico-form-auth-element-valid-active-border-color);
+	--pico-background-color: var(--cm-background);
+
+	// Text color
+	--pico-color: #{theme-colors.get('text-primary', 'light')};
+
+	// Text selection color
+	--pico-text-selection-color: #{theme-colors.get('utility-highlight', 'light')};
+
+	// Muted colors
+	--pico-muted-color: #{theme-colors.get('text-secondary', 'light')};
+	--pico-muted-border-color: var(--cm-border);
+
+	// Primary colors
+	--pico-primary: #{theme-colors.get('primary', 'light')};
+	--pico-primary-background: var(--cm-primary);
+	--pico-primary-border: var(--pico-primary-background);
+	--pico-primary-underline: #{theme-colors.get('primary-underline', 'light')};
+	--pico-primary-hover: #{theme-colors.get('primary-hover', 'light')};
+	--pico-primary-hover-background: #{theme-colors.get('primary-hover-background', 'light')};
+	--pico-primary-hover-border: var(--pico-primary-hover-background);
+	--pico-primary-hover-underline: var(--pico-primary-hover);
+	--pico-primary-focus: #{theme-colors.get('primary-active', 'light')};
+	--pico-primary-inverse: #{theme-colors.get('primary-inverse', 'light')};
+
+	// Secondary colors
+	--pico-secondary: #{$slate-550};
+	--pico-secondary-background: #{$slate-600};
+	--pico-secondary-border: var(--pico-secondary-background);
+	--pico-secondary-underline: #{functions.rgba($slate-550, 0.5)};
+	--pico-secondary-hover: #{$slate-650};
+	--pico-secondary-hover-background: #{$slate-650};
+	--pico-secondary-hover-border: var(--pico-secondary-hover-background);
+	--pico-secondary-hover-underline: var(--pico-secondary-hover);
+	--pico-secondary-focus: #{functions.rgba($slate-550, 0.25)};
+	--pico-secondary-inverse: #{$white};
+
+	// Contrast colors
+	--pico-contrast: #{$slate-900};
+	--pico-contrast-background: #{$slate-900};
+	--pico-contrast-border: var(--pico-contrast-background);
+	--pico-contrast-underline: #{functions.rgba($slate-900, 0.5)};
+	--pico-contrast-hover: #{$black};
+	--pico-contrast-hover-background: #{$black};
+	--pico-contrast-hover-border: var(--pico-contrast-hover-background);
+	--pico-contrast-hover-underline: var(--pico-secondary-hover);
+	--pico-contrast-focus: #{functions.rgba($slate-550, 0.25)};
+	--pico-contrast-inverse: #{$white};
+
+	// Box shadow
+	--pico-box-shadow: functions.shadow($slate-400);
+
+	// // Typography
+	// @if map.get($modules, "content/typography") {
+	// 	// Headings colors
+	// 	--pico-h1-color: #{$zinc-800};
+	// 	--pico-h2-color: #{$zinc-750};
+	// 	--pico-h3-color: #{$zinc-700};
+	// 	--pico-h4-color: #{$zinc-650};
+	// 	--pico-h5-color: #{$zinc-600};
+	// 	--pico-h6-color: #{$zinc-550};
+
+	// 	// Highlighted text (<mark>)
+	// 	--pico-mark-background-color: #{functions.mix($amber-100, $amber-50)};
+	// 	--pico-mark-color: #{$zinc-950};
+
+	// 	// Inserted (<ins>) & Deleted (<del>)
+	// 	--pico-ins-color: #{functions.mix($jade-450, $zinc-750)};
+	// 	--pico-del-color: #{functions.mix($red-500, $zinc-750)};
+
+	// 	// Blockquote
+	// 	--pico-blockquote-border-color: var(--pico-muted-border-color);
+	// 	--pico-blockquote-footer-color: var(--pico-muted-color);
+	// }
+
+	// // Button
+	// @if map.get($modules, "content/button") {
+	// 	// To disable box-shadow, remove the var or set to '0 0 0 rgba(0, 0, 0, 0)'
+	// 	// Don't use, 'none, 'false, 'null', '0', etc.
+	// 	--pico-button-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	// 	--pico-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+	// }
+
+	// Table
+	--pico-table-border-color: var(--pico-muted-border-color);
+	--pico-table-row-stripped-background-color: #{functions.rgba($zinc-500, 0.0375)};
+
+	// // Code
+	// @if map.get($modules, "content/code") {
+	// 	--pico-code-background-color: #{functions.mix($slate-50, $white, 75%)};
+	// 	--pico-code-color: #{$zinc-550};
+	// 	--pico-code-kbd-background-color: var(--pico-color);
+	// 	--pico-code-kbd-color: var(--pico-background-color);
+	// }
+
+	// Form elements
+	--pico-form-element-background-color: #{functions.mix($slate-50, $white, 25%)};
+	--pico-form-element-selected-background-color: #{$slate-100};
+	--pico-form-element-border-color: #{$slate-150};
+	--pico-form-element-color: #{$zinc-850};
+	--pico-form-element-placeholder-color: var(--pico-muted-color);
+	--pico-form-element-active-background-color: #{$white};
+	--pico-form-element-active-border-color: var(--pico-primary-border);
+	--pico-form-element-focus-color: var(--pico-primary-border);
+	--pico-form-element-disabled-opacity: 0.5;
+	--pico-form-element-invalid-border-color: #{functions.mix($red-500, $zinc-350)};
+	--pico-form-element-invalid-active-border-color: #{functions.mix($red-500, $zinc-350, 75%)};
+	--pico-form-element-invalid-focus-color: var(--pico-form-element-invalid-active-border-color);
+	--pico-form-element-valid-border-color: #{functions.mix($jade-450, $zinc-350)};
+	--pico-form-element-valid-active-border-color: #{functions.mix($jade-450, $zinc-350, 75%)};
+	--pico-form-element-valid-focus-color: var(--pico-form-element-valid-active-border-color);
+
+	// Switch (input[type="checkbox"][role="switch"])
+	@if map.get($modules, 'forms/checkbox-radio-switch') {
+		--pico-switch-background-color: #{$slate-200};
+		--pico-switch-checked-background-color: var(--pico-primary-background);
+		--pico-switch-color: #{$white};
+		--pico-switch-thumb-box-shadow: #{theme-colors.get('switch-thumb-box-shadow', 'light')};
+	}
+
+	// Range (input[type="range"])
+	@if map.get($modules, 'forms/input-range') {
+		--pico-range-border-color: #{$slate-100};
+		--pico-range-active-border-color: #{$slate-200};
+		--pico-range-thumb-border-color: var(--pico-background-color);
+		--pico-range-thumb-color: var(--pico-secondary-background);
+		--pico-range-thumb-active-color: var(--pico-primary-background);
+	}
+
+	// Accordion (<details>)
+	@if map.get($modules, 'components/accordion') {
+		--pico-accordion-border-color: var(--pico-muted-border-color);
+		--pico-accordion-active-summary-color: var(--pico-primary-hover);
+		--pico-accordion-close-summary-color: var(--pico-color);
+		--pico-accordion-open-summary-color: var(--pico-muted-color);
+	}
+
+	// Card (<article>)
+	@if map.get($modules, 'components/card') {
+		--pico-card-background-color: var(--pico-background-color);
+		--pico-card-border-color: var(--pico-muted-border-color);
+		--pico-card-box-shadow: var(--pico-box-shadow);
+		--pico-card-sectioning-background-color: #{functions.mix($slate-50, $white, 25%)};
+	}
+
+	// Dropdown (details.dropdown)
+	@if map.get($modules, 'components/dropdown') and $enable-classes {
+		--pico-dropdown-background-color: #{$white};
+		--pico-dropdown-border-color: #{$slate-50};
+		--pico-dropdown-box-shadow: var(--pico-box-shadow);
+		--pico-dropdown-color: var(--pico-color);
+		--pico-dropdown-hover-background-color: #{$slate-50};
+	}
+
+	// Loading ([aria-busy=true])
+	@if map.get($modules, 'components/loading') {
+		--pico-loading-spinner-opacity: 0.5;
+	}
+
+	// Modal (<dialog>)
+	--pico-modal-overlay-background-color: #{functions.rgba($black, 0.1)};
+
+	// Progress
+	@if map.get($modules, 'components/progress') {
+		--pico-progress-background-color: #{$slate-100};
+		--pico-progress-color: var(--pico-primary-background);
+	}
+
+	// Tooltip ([data-tooltip])
+	@if map.get($modules, 'components/tooltip') {
+		--pico-tooltip-background-color: var(--pico-contrast-background);
+		--pico-tooltip-color: var(--pico-contrast-inverse);
+	}
+
+	// Form validation icons
+	@if map.get($modules, 'forms/basics') {
+		--pico-icon-valid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='#{functions.display-rgb(functions.mix($jade-450, $zinc-350))}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+		--pico-icon-invalid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='#{functions.display-rgb(functions.mix($red-500, $zinc-350, 75%))}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='8' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='16' x2='12.01' y2='16'%3E%3C/line%3E%3C/svg%3E");
+	}
+
+	// Document
+	color-scheme: light;
+
+	// Focus for buttons, radio and select
+	input:is(
+	[type='submit'],
+	[type='button'],
+	[type='reset'],
+	[type='checkbox'],
+	[type='radio'],
+	[type='file']
+) {
+		--pico-form-element-focus-color: var(--pico-primary-focus);
+	}
+
+	label {
+		&.auth {
+			color: #{$white}
+		}
+	}
+}

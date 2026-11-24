@@ -1,0 +1,6 @@
+@use 'sass:map';
+
+// Forward variables and mixins without a namespace
+@forward 'global/variables';
+@forward 'global/mixins';
+@forward 'global/functions';

@@ -1,0 +1,66 @@
+@use 'sass:map';
+@use '@picocss/pico/scss/colors' as *;
+@use '@picocss/pico/scss/settings' as *;
+@use './functions' as functions;
+
+$color-mappings: (
+	'dark': (
+		'text-selection-color': functions.rgba($lime-350, 0.1875),
+		'primary': $lime-350,
+		'primary-background': $lime-200,
+		'primary-underline': functions.rgba($lime-350, 0.5),
+		'primary-hover': $lime-250,
+		'primary-hover-background': $lime-150,
+		'primary-focus': functions.rgba($lime-350, 0.375),
+		'primary-inverse': $black,
+		'switch-thumb-box-shadow': 0 0 0.5rem functions.rgba($black, 0.25),
+	),
+	'light': (
+		'app-background-primary': #FFFFFF, 
+		'app-background-secondary': #F1F1EA, 
+		'app-background-inverse': #333333,
+		'text-primary': #2B2B2B,
+		'text-primary-light': #505050,
+		'text-secondary': #9797A9,
+		'text-secondary-dark': #737383,
+
+		'danger': #c62828,
+		'warning': #d7a309, 
+		'success': #388e3c,
+
+		
+		
+		
+		'primary': #195140,
+		'primary-hover': #1D392F, 
+		'primary-active': #134031,
+
+		'primary-light': #3F6C5D,
+		'primary-light-hover': #3B846E,
+
+		'secondary': #F1F1EA,
+		'secondary-hover': #FAFAF5,
+
+		'utility-background-secondary': #E8EBE9,
+		'utility-highlight': #F8F7F3,
+
+		'border': #F4F4F4, 
+
+		'money': #468525,
+		'money-light': #EFFAE1,
+
+		'form-background': #F4F4F4,
+		'form-border': #D7D7D7,
+
+		'text-selection-color': #00F,
+		'primary-background':  #00F,
+		'primary-underline':  #00F,
+		'primary-hover-background': #00F,
+		'primary-inverse': #00F,
+		'switch-thumb-box-shadow': 0 0 0.5rem functions.rgba(#00F, 0.25),
+	),
+);
+
+@function get($key, $mode: 'light') {
+	@return map.get(map.get($color-mappings, $mode), $key);
+}

@@ -1,0 +1,39 @@
+{
+	"log" : {
+		"environment" : {"deny":["prod"]},
+		"googleTagManager" : {"deny":["all"]},
+		"debug" : {"deny":["prod"]},
+		"info" : {"deny":["prod"]},
+		"error" : {"allow":["all"]},
+		"signal" : {"deny":["prod"]}
+	},
+	"report" : {
+		"debug" : {"allow":["local", "dev"], "deny":["prod"]},
+		"info" : {"allow":["local", "dev"], "deny":["prod"]},
+		"error" : {"allow":["all"]},
+		"signal" : {"deny":["prod"]}
+	},
+	"tool" : {
+		"dev" : {"deny":["staging", "prod"]}
+	},
+	"feature" : {
+		"serviceWorker" : {"deny":["local"]}
+	},
+	"component" : {
+		"footer" : {"deny":["all"]},
+		"footerVideo" : {"deny":["all"]},
+		"hero" : {"allow":["dev", "staging", "prod"]},
+		"subHero" : {"deny":["all"]}
+	},
+	"placeholder" : {
+		"hero" : {"deny":["prod"]}
+	},
+	"integration" : {
+		"tawkTo" : {},
+		"hotjar" : {},
+		"klaviyo" : {"allow":["dev", "staging", "prod"]},
+		"zapier" : {},
+		"googleAnalytics" : {},
+		"googleTagManager" : {"allow":["dev"]}
+	}
+}

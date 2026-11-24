@@ -1,0 +1,22 @@
+@use '@picocss/pico/scss/settings' as *;
+
+#{$semantic-root-element} {
+	.list {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+
+		.cm-list-item {
+			width: 100%;
+		}
+
+		.cm-list-item:not(:first-child) {
+			padding-top: 0.5rem;
+		}
+
+		.cm-list-item:not(:last-child) {
+			padding-bottom: 0.5rem;
+			border-bottom: 1px solid var(--cm-border)
+		}
+	}
+}

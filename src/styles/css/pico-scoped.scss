@@ -1,0 +1,90 @@
+// Import Pico CSS core modules directly and scope them
+@use 'sass:map';
+@use '@picocss/pico/scss/settings' as *;
+@use '@picocss/pico/scss/colors' as *;
+
+// Import custom functions
+@use 'theme/crofter/functions' as functions;
+
+// Define Pico CSS variables - set root to .pico-scope
+$semantic-root-element: '.pico-scope';
+
+// Define breakpoints
+$breakpoints: (
+	xs: (breakpoint: 480px, viewport: 480px, root-font-size: 1rem),
+	sm: (breakpoint: 576px, viewport: 510px, root-font-size: 1rem),
+	md: (breakpoint: 768px, viewport: 700px, root-font-size: 0.75rem),
+	lg: (breakpoint: 1024px, viewport: 950px, root-font-size: 1rem),
+	xl: (breakpoint: 1280px, viewport: 1200px, root-font-size: 1rem),
+	xxl: (breakpoint: 1536px, viewport: 1450px, root-font-size: 1rem)
+);
+
+// Import Pico modules with the scoped root
+// @use "@picocss/pico/scss/components/tooltip" as pico-tooltip;
+
+// Theme
+@use 'theme/crofter';
+
+// Layout
+@use 'layout/document';
+@use 'layout/body';
+@use 'layout/landmarks';
+@use 'layout/container';
+@use 'layout/section';
+@use 'layout/grid';
+@use 'layout/overflow-auto';
+
+// Content
+@use 'content/link';
+@use 'content/typography';
+@use 'content/button';
+@use 'content/table';
+@use 'content/miscs';
+@use 'content/embedded';
+
+// Forms
+@use 'forms/basics';
+@use 'forms/checkbox-radio-switch';
+@use 'forms/input-color';
+
+// @use "forms/input-date";
+@use 'forms/input-file';
+@use 'forms/input-range';
+@use 'forms/input-search';
+
+// Components
+@use 'components/nav';
+@use 'components/list';
+@use 'components/tooltip';
+@use 'components/loading';
+@use 'components/modal';
+
+// Utilities
+@use 'utilities/accessibility';
+@use 'utilities/reduce-motion';
+
+// Capacitor specific styles
+@use 'capacitor';
+
+// Media queries for font sizes scoped to .pico-scope
+.pico-scope {
+	@media (width >= 576px) {
+		--pico-font-size: 1rem;
+	}
+
+	@media (width >= 768px) {
+		--pico-font-size: 0.75rem;
+	}
+
+	@media (width >= 1024px) {
+		--pico-font-size: 1rem;
+	}
+
+	@media (width >= 1280px) {
+		--pico-font-size: 1rem;
+	}
+
+	@media (width >= 1536px) {
+		--pico-font-size: 1rem;
+	}
+}

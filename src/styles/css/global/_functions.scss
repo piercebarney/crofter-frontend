@@ -1,0 +1,10 @@
+@use 'sass:map';
+@use 'variables';
+
+@function breakpoint($size) {
+	@return map.get(map.get(variables.$breakpoints, $size), 'breakpoint');
+}
+
+@function viewport($size) {
+	@return map.get(map.get(variables.$breakpoints, $size), 'viewport');
+}

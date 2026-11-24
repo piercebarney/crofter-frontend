@@ -1,0 +1,35 @@
+@use 'sass:map';
+@use '@picocss/pico/scss/settings' as *;
+
+#{$semantic-root-element} {
+	@if map.get($modules, 'layout/container') and $enable-classes {
+		/**
+   * Container
+   */
+
+		.container,
+		.container-fluid {
+			width: 100%;
+			margin-right: auto;
+			margin-left: auto;
+			padding-right: 1rem;
+			padding-left: 1rem;
+		}
+
+		// .container {
+		//   $first-breakpoint: true;
+		//   @each $key, $values in $breakpoints {
+		//     @if $values {
+		//       @media (min-width: map.get($values, "breakpoint")) {
+		//         max-width: map.get($values, "viewport");
+		//         @if $first-breakpoint {
+		//           $first-breakpoint: false;
+		//           padding-right: 0;
+		//           padding-left: 0;
+		//         }
+		//       }
+		//     }
+		//   }
+		// }
+	}
+}

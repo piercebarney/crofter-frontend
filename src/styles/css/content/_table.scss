@@ -1,0 +1,73 @@
+@use 'sass:map';
+@use '@picocss/pico/scss/settings' as *;
+
+#{$semantic-root-element} {
+	// 1. Collapse border spacing in all browsers (opinionated)
+	// 2. Remove text indentation from table contents in Chrome, Edge, and Safari
+	:where(table) {
+		width: 100%;
+		border-collapse: collapse; // 1
+		border-spacing: 0;
+		text-indent: 0; // 2
+	}
+
+	tr {
+		&.inactive {
+			opacity: 0.5;
+		}
+
+		&.button {
+			cursor: pointer;
+
+			td {
+				transition:
+				background-color var(--pico-transition)
+			}
+
+			&:hover td {
+				background-color: var(--cm-utility-highlight);
+			}
+		}
+	}
+
+	// Cells
+	th,
+	td {
+		--table-padding: 1rem;
+
+		padding: calc(var(--table-padding) / 2) var(--table-padding);
+		border-bottom: var(--pico-border-width)
+			solid
+			var(--cm-border);
+
+		// background-color: var(--cm-background);
+		color: var(--cm-text);
+		text-align: left;
+		text-align: start;
+	}
+
+	th {
+		font-weight: 600;
+	}
+
+	// Footer
+	tfoot {
+		th,
+		td {
+			border-top: var(--pico-border-width)
+				solid
+				var(--pico-table-border-color);
+			border-bottom: 0;
+		}
+	}
+
+	// // Striped
+	// table {
+	// 	&.striped {
+	// 		tbody tr:nth-child(odd) th,
+	// 		tbody tr:nth-child(odd) td {
+	// 		background-color: var(--pico-table-row-stripped-background-color);
+	// 		}
+	// 	}
+	// }
+}

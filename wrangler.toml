@@ -1,0 +1,40 @@
+name = "crofter"
+account_id = "YOUR_CLOUDFLARE_ACCOUNT_ID"
+workers_dev = true
+compatibility_flags = ["nodejs_compat"]
+compatibility_date = "2025-06-09"
+
+main = ".svelte-kit/cloudflare/_worker.js"
+
+# Default environment settings
+[env.dev]
+vars = { ENV = "dev" }
+log_level = "debug"
+routes = [
+	{ pattern = "example.com", custom_domain = true }
+]
+[env.dev.observability]
+enabled = true
+
+[env.staging]
+vars = { ENV = "staging" }
+log_level = "debug"
+routes = [
+	{ pattern = "example.com", custom_domain = true },
+	{ pattern = "example.com", custom_domain = true }
+]
+[env.staging.observability]
+enabled = true
+
+[env.prod]
+vars = { ENV = "prod" }
+log_level = "warn"
+routes = [
+	{ pattern = "example.com", custom_domain = true }
+]
+[env.prod.observability]
+enabled = true
+
+[site]
+bucket = ".cloudflare/public"
+exclude = []

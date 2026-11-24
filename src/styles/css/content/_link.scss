@@ -1,0 +1,153 @@
+@use '@picocss/pico/scss/settings' as *;
+
+#{$semantic-root-element} {
+	:where(a:not([role='button']), a:not([role='wrapper'])),
+	[role='link'] {
+		--link-color: inherit;
+		--link-text-decoration: none;
+		--link-underline: inherit;
+		--stroke: inherit;
+
+		padding: 0;
+		margin: 0;
+		background-color: transparent;
+		outline: none;
+		color: var(--link-color);
+		stroke: var(--stroke);
+		text-decoration: var(--link-text-decoration);
+		text-decoration-color: var(--link-underline);
+		text-underline-offset: 0.125em;
+		border: none;
+		font-size: inherit;
+		font-weight: inherit;
+		cursor: pointer;
+		transition:
+			color var(--pico-transition),
+			stroke var(--pico-transition),
+			text-decoration var(--pico-transition);
+
+		&:is([aria-current]:not([aria-current='false']), :hover, :active, :focus):not(.inverse) {
+			--link-color: var(--cm-primary);
+			--stroke: var(--cm-primary);
+		}
+
+		&.inverse {
+			--link-color: var(--cm-primary);
+		
+			&:is([aria-current]:not([aria-current='false']), :hover, :active, :focus) {
+				--link-color: var(--cm-primary-hover);
+				--link-text-decoration: underline;
+			}
+		}
+
+		&.danger {
+			--link-color: var(--cm-danger);
+
+			&:is([aria-current]:not([aria-current='false']), :hover, :active, :focus) {
+				--link-color: var(--cm-danger-hover);
+				--link-text-decoration: underline;
+			}	
+		}
+
+		&.warning {
+			--link-color: var(--cm-warning);
+
+			&:is([aria-current]:not([aria-current='false']), :hover, :active, :focus) {
+				--link-color: var(--cm-warning-hover);
+				--link-text-decoration: underline;
+			}	
+		}
+
+		&.success {
+			--link-color: var(--cm-success);
+
+			&:is([aria-current]:not([aria-current='false']), :hover, :active, :focus) {
+				--link-color: var(--cm-success-hover);
+				--link-text-decoration: underline;
+			}	
+		}
+
+		&.info {
+			--link-color: var(--cm-info);
+
+			&:is([aria-current]:not([aria-current='false']), :hover, :active, :focus) {
+				--link-color: var(--cm-info-hover);
+				--link-text-decoration: underline;
+			}	
+		}
+
+		&.application {
+			--link-color: #468047;
+
+			&:is([aria-current]:not([aria-current='false']), :hover, :active, :focus) {
+				--link-color: #468047;
+				--link-text-decoration: underline;
+			}	
+		}
+
+		&.underline {
+			--link-text-decoration: underline;
+
+			&:is([aria-current]:not([aria-current='false']), :hover, :active, :focus) {
+				--link-color: inherit;
+			}
+		}
+
+		&.hover-underline {
+			&:is([aria-current]:not([aria-current='false']), :hover, :active, :focus) {
+				--link-color: inherit;
+				--link-text-decoration: underline;
+			}
+		}
+
+		&.hover-application {
+			&:is([aria-current]:not([aria-current='false']), :hover, :active, :focus) {
+				--link-color: #468047;
+				--stroke: #468047;
+			}
+		}
+
+		// @if $enable-classes {
+		// 	// Secondary
+		// 	&.secondary {
+		// 		--pico-color: var(--pico-secondary);
+		// 		--pico-underline: var(--pico-secondary-underline);
+
+		// 		&:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
+		// 			--pico-color: var(--pico-secondary-hover);
+		// 			--pico-underline: var(--pico-secondary-hover-underline);
+		// 		}
+		// 	}
+
+		// 	// Contrast
+		// 	&.contrast {
+		// 		--pico-color: var(--pico-contrast);
+		// 		--pico-underline: var(--pico-contrast-underline);
+
+		// 		&:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
+		// 			--pico-color: var(--pico-contrast-hover);
+		// 			--pico-underline: var(--pico-contrast-hover-underline);
+		// 		}
+		// 	}
+		// }
+	}
+
+	// a {
+	// 	&[role="button"] {
+	// 		display: inline-block;
+	// 	}
+	// }
+
+	:where(a[role='wrapper']) {
+		display: block;
+		margin: 0;
+		padding: 0;
+		background-color: transparent;
+		cursor: pointer;
+		color: inherit;
+		stroke: inherit;
+		font-size: inherit;
+		text-align: inherit;
+		text-decoration: none;
+	}
+}

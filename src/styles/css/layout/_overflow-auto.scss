@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use '@picocss/pico/scss/settings' as *;
+
+#{$semantic-root-element} {
+	@if map.get($modules, 'layout/overflow-auto') and $enable-classes {
+		/**
+   * Overflow auto
+   */
+
+		#{$parent-selector} .overflow-auto {
+			overflow: auto;
+		}
+	}
+}

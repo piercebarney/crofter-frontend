@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '@picocss/pico/scss/settings' as *;
+
+#{$semantic-root-element} {
+	@if map.get($modules, 'layout/grid') and $enable-classes {
+		/**
+   * Grid
+   * Minimal grid system with auto-layout columns
+   */
+
+		.grid {
+			gap: var(#{$css-var-prefix}grid-row-gap) var(#{$css-var-prefix}grid-column-gap);
+			display: grid;
+			grid-template-columns: 1fr;
+
+			@if map.get($breakpoints, 'md') {
+				@media (min-width: map.get(map.get($breakpoints, 'md'), 'breakpoint')) {
+					grid-template-columns: repeat(auto-fit, minmax(0%, 1fr));
+				}
+			}
+
+			& > * {
+				min-width: 0; // HACK for children in overflow
+			}
+		}
+	}
+}

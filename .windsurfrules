@@ -1,0 +1,3 @@
+- Only use SASS in .svelte files.
+- My code formatting style includes lots of extra whitespace to seperate areas of concern and to help with readability. To not remove the extra whitespace.
+- Use ES modules.
